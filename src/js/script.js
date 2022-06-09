@@ -26,6 +26,7 @@ fetch(requests.fetchNetflixOrignals)
     banner.src = IMG_URL + setMovie.backdrop_path
     bannerTitle.innerHTML = setMovie.name
     bannerDesc.innerHTML = setMovie.overview
+    
 
 
     const requestInfo = {
@@ -50,7 +51,37 @@ fetch(requests.fetchNetflixOrignals)
             
         
         })
-    }) 
+    })
+    
+    const btnInfo = document.querySelector('.btnInfo')
+    const popup = document.querySelector('.popupBox')
+
+
+    btnInfo.addEventListener('click', () => {
+        const textBanner = document.querySelector('.textBanner');
+        const bannerPopup = document.querySelector('.bannerPopup img');
+        const textInfoPonto = document.querySelector('.pontos h4');
+        const descPopup = document.querySelector('.descPopup');
+        popup.classList.add('active')
+        
+        textBanner.innerHTML = setMovie.name
+        descPopup.innerHTML = setMovie.overview
+        textInfoPonto.innerHTML = setMovie.vote_average + ' ' + 'Pontos'
+        bannerPopup.src = `${IMG_URL}${setMovie.backdrop_path}`
+
+        fetch(requestInfo.fetchNetflixOrignals2)
+        .then((res) => res.json())
+        .then((data) => {
+            data.genres.forEach(genre => {
+                const textGenre = document.querySelector('.categoriasPopup');
+                const genreTag = `<span>${genre.name}</span>`
+                textGenre.insertAdjacentHTML('beforeend', genreTag)
+            })
+        }) 
+        
+    })
+
+
 })
 
 
