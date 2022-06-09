@@ -345,15 +345,15 @@ section {
 
 .popupBox {
     position: fixed;
-    top: 0;
+    top: -14px;
     bottom: 0;
     left: 0;
     right: 0;
     margin: auto;
     width: 100%;
-    max-width: 60%;
+    max-width: 600px;
     height: 100vh;
-    max-height: 80vh;
+    max-height: 800px;
     background: #121110;
     box-shadow: 0 5px 15px #000;
     border-radius: 20px;
@@ -364,7 +364,7 @@ section {
 
 .popupBox.active {
     overflow: visible;
-    z-index: 23;
+    z-index: 777777;
     opacity: 1;
 }
 
@@ -476,6 +476,7 @@ section {
     .menuDrop {
         display: block;
     }
+    
 }
 
 @media (max-width: 720px) {
@@ -495,4 +496,22 @@ section {
    .formSearch input {
     display: none;
    }
+
+   .slide:hover {
+    transform: scale(1);
+    }
+
+    .popupBox, .bannerPopup {
+        border-radius: 0px;
+        overflow: hidden;
+    }
+
+    .descri p {
+        width: 100%;
+    }
+
+    .contCategoriasPopup {
+        display: none;
+    }
+
 }
