@@ -113,6 +113,10 @@ main {
     margin-bottom: 15px;
 }
 
+.textinfoPrincipal h1 {
+    font-size: 45px;
+}
+
 .textinfoPrincipal span {
     font-size: 18px;
     font-weight: bold;
@@ -146,7 +150,7 @@ main {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    width: 130px;
+    width: 160px;
     height: 45px;
     border: none;
     margin-right: 15px;
@@ -166,6 +170,7 @@ main {
 
 .textMovie .btnMovie button span:first-child {
     color: #000;
+    
 }
 
 .btn-secondary {
@@ -206,7 +211,6 @@ section {
     position: relative;
     bottom: 40px;
     width: 100%;
-    height: 200px;
     padding: 0 50px;
     margin-bottom: 50px;
 }
@@ -347,14 +351,23 @@ section {
     background: #121110;
     box-shadow: 0 5px 15px #000;
     border-radius: 20px;
-    z-index: 66;
+    z-index: -5;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.popupBox.active {
+    overflow: visible;
+    z-index: 23;
+    opacity: 1;
 }
 
 .bannerPopup {
     width: 100%;
     height: 70%;
-    overflow: hidden;
     background-color: #000;
+    border-radius: 20px;
+    overflow: hidden;
 }
 
 .bannerPopup img {
@@ -384,7 +397,7 @@ section {
 }
 
 .descri p {
-    width: 300px;
+    width: 70%;
     font-size: 16px;
     color: #fff;
     overflow: hidden;
@@ -401,6 +414,23 @@ section {
     margin-left: 10px;
 }
 
+.categoriasPopup span {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.contCategoriasPopup {
+    display: flex;
+    flex-direction:row;
+    justify-content: flex-end;
+    width: 30%;
+}
+
+.contCategoriasPopup h1 {
+    font-size: 18px;
+    font-weight: normal;
+}
+
 .btnClose {
     position: absolute;
     top: 20px;
@@ -408,15 +438,15 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     background-color: #1925249b;
     cursor: pointer;
 }
 
 .btnClose i {
-    font-size: 28px;
+    font-size: 16px;
     font-weight: bold;
     color: #fff;
 }

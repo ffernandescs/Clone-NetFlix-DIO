@@ -30,14 +30,12 @@ fetch(requests.fetchNetflixOrignals)
 
     const requestInfo = {
         fetchNetflixOrignals2: `${BASE_URL}/tv/${setMovie.id}?${API_KEY}&with_networks=213`,
-
     }
 
     fetch(requestInfo.fetchNetflixOrignals2)
     .then((res) => res.json())
     .then((data) => {
         data.genres.forEach(genre => {
-            console.log(data)
             const textGenre = document.querySelector('.textCategorias');
             const genreTag = `<span>${genre.name}</span>`
             textGenre.insertAdjacentHTML('beforeend', genreTag)
@@ -60,9 +58,8 @@ fetch(requests.fetchNetflixOrignals)
 .then((res) => res.json())
 .then((data) => {
     data.results.forEach(movie => {
-
         const movieEl = document.querySelector('.containerSlider');
-        const itemSlider = `<div class="slide">
+        const itemSlider = `<div class="slide" data-movie="${movie.id}">
                                 <img src="${IMG_URL}${movie.backdrop_path}">
                                 <div class="containerMovie">
                                     <div class="buttonControls">
@@ -76,24 +73,56 @@ fetch(requests.fetchNetflixOrignals)
                                             <button type="button" class="btn btn-dark ">
                                             <i class="bi bi-hand-thumbs-up"></i>
                                             </button>
-                                            <button type="button" class="btn btn-dark ">
+                                            <button type="button" class="btn btn-dark" >
                                             <i class="bi bi-hand-thumbs-down"></i>
                                             </button>
                                         </div>
 
                                         
-                                        <button type="button" class="btn btn-dark ">
+                                        <button type="button" class="btn btn-dark btnPopupOpen" data-movie="${movie.id}">
                                         <i class="bi bi-chevron-down"></i>
                                         </button>
                                     </div>
                                     <div class="textInfo">
-                                        <h3>${movie.name}</h3>
+                                        <h3 class="textName">${movie.name}</h3>
                                         <h4>${movie.vote_average} Pontos</h4>
                                     </div>
                                 </div>
                             </div>`
 
         movieEl.insertAdjacentHTML('beforeend', itemSlider)
+
+
+        const telPopup = document.querySelector(`[data-movie="${movie.id}"] .btnPopupOpen`);
+        const popup = document.querySelector('.popupBox')
+        const requestInfo = {
+            fetchNetflixOrignals2: `${BASE_URL}/tv/${movie.id}?${API_KEY}&with_networks=213`,
+            
+        }
+
+        telPopup.addEventListener('click', () => {
+            const textBanner = document.querySelector('.textBanner');
+            const bannerPopup = document.querySelector('.bannerPopup img');
+            const textInfoPonto = document.querySelector('.pontos h4');
+            const descPopup = document.querySelector('.descPopup');
+            popup.classList.add('active')
+            
+            textBanner.innerHTML = movie.name
+            descPopup.innerHTML = movie.overview
+            textInfoPonto.innerHTML = movie.vote_average + ' ' + 'Pontos'
+            bannerPopup.src = `${IMG_URL}${movie.backdrop_path}`
+
+            fetch(requestInfo.fetchNetflixOrignals2)
+            .then((res) => res.json())
+            .then((data) => {
+                data.genres.forEach(genre => {
+                    const textGenre = document.querySelector('.categoriasPopup');
+                    const genreTag = `<span>${genre.name}</span>`
+                    textGenre.insertAdjacentHTML('beforeend', genreTag)
+                })
+            }) 
+            
+        })
     })
 })
 
@@ -104,7 +133,7 @@ fetch(requests.fetchTrending)
     data.results.forEach(movie => {
 
         const movieEl = document.querySelector('.box1');
-        const itemSlider = `<div class="slide">
+        const itemSlider = `<div class="slide" data-movie="${movie.id}">
                                 <img src="${IMG_URL}${movie.backdrop_path}">
                                 <div class="containerMovie">
                                     <div class="buttonControls">
@@ -118,18 +147,18 @@ fetch(requests.fetchTrending)
                                             <button type="button" class="btn btn-dark ">
                                             <i class="bi bi-hand-thumbs-up"></i>
                                             </button>
-                                            <button type="button" class="btn btn-dark ">
+                                            <button type="button" class="btn btn-dark" >
                                             <i class="bi bi-hand-thumbs-down"></i>
                                             </button>
                                         </div>
 
                                         
-                                        <button type="button" class="btn btn-dark ">
+                                        <button type="button" class="btn btn-dark btnPopupOpen" data-movie="${movie.id}">
                                         <i class="bi bi-chevron-down"></i>
                                         </button>
                                     </div>
                                     <div class="textInfo">
-                                        <h3>${movie.original_name}</h3>
+                                        <h3 class="textName">${movie.name}</h3>
                                         <h4>${movie.vote_average} Pontos</h4>
                                     </div>
                                 </div>
@@ -137,8 +166,38 @@ fetch(requests.fetchTrending)
 
         movieEl.insertAdjacentHTML('beforeend', itemSlider)
 
-        
-    })
+
+        const telPopup = document.querySelector(`[data-movie="${movie.id}"] .btnPopupOpen`);
+        const popup = document.querySelector('.popupBox')
+        const requestInfo = {
+        fetchNetflixOrignals2: `${BASE_URL}/tv/${movie.id}?${API_KEY}&with_networks=213`,
+
+        }
+
+        telPopup.addEventListener('click', () => {
+        const textBanner = document.querySelector('.textBanner');
+        const bannerPopup = document.querySelector('.bannerPopup img');
+        const textInfoPonto = document.querySelector('.pontos h4');
+        const descPopup = document.querySelector('.descPopup');
+        popup.classList.add('active')
+
+        textBanner.innerHTML = movie.name
+        descPopup.innerHTML = movie.overview
+        textInfoPonto.innerHTML = movie.vote_average + ' ' + 'Pontos'
+        bannerPopup.src = `${IMG_URL}${movie.backdrop_path}`
+
+        fetch(requestInfo.fetchNetflixOrignals2)
+        .then((res) => res.json())
+        .then((data) => {
+            data.genres.forEach(genre => {
+                const textGenre = document.querySelector('.categoriasPopup');
+                const genreTag = `<span>${genre.name}</span>`
+                textGenre.insertAdjacentHTML('beforeend', genreTag)
+                })
+                }) 
+
+            })
+        })
 })
 fetch(requests.fetchTrending2)
 .then((res) => res.json())
@@ -182,4 +241,16 @@ fetch(requests.fetchTrending2)
 
         
     })
+})
+
+
+const btnClosePopPup = document.querySelector('.btnClose');
+
+btnClosePopPup.addEventListener('click', () => {
+    const telaPopup = document.querySelector('.popupBox');
+    const categoriasPopup = document.querySelector('.categoriasPopup');
+
+    telaPopup.classList.remove('active')
+    categoriasPopup.innerHTML = ''
+    
 })
