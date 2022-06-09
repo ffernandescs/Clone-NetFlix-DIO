@@ -455,3 +455,43 @@ section {
     font-weight: bold;
     color: #fff;
 }
+
+
+.menuDrop {
+    display: none;
+}
+
+
+@media (max-width: 1050px) {
+    body {
+        background: #121110;
+        overflow-x: hidden;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .menuDrop {
+        display: block;
+    }
+}
+
+@media (max-width: 720px) {
+    .navbar, .containerItens {
+        padding: 0 10px;
+    }
+
+   .formSearch {
+    width: 50px;
+    min-width: 50px;
+    border: none;
+    margin: 0;
+   }
+
+   
+
+   .formSearch input {
+    display: none;
+   }
+}
