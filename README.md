@@ -1,6 +1,7 @@
 # PROJETO • E-COMMERCE
 
 <img src="./src/img/image.png" alt="Imagem do Projeto"/>
+<img src="./src/img/image2.png" alt="Imagem do Projeto"/>
 
 >  O projeto de um clone da pagina principal do Netflix para o Bootcamp Carrefour Web Developer na plataforma da DIO
 
