@@ -285,3 +285,15 @@ btnClosePopPup.addEventListener('click', () => {
     categoriasPopup.innerHTML = ''
     
 })
+
+const navbar = document.querySelector('.navbar');
+
+window.addEventListener('scroll', () => {
+    if(scrollY > 10) {
+        navbar.classList.add('active')
+    } else {
+        navbar.classList.remove('active')
+    }
+    
+  
+  })

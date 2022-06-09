@@ -20,6 +20,12 @@
     justify-content: space-between;
     width: 100%;
     padding: 0 50px;
+    transition: all 0.5s ease-in-out;
+}
+
+.navbar.active {
+    background-color: #121110;
+
 }
 
 
