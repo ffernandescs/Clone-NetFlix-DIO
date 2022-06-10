@@ -10,9 +10,10 @@
 
  body {
      background: #121110;
+     display: flex;
+     flex-direction: column;
      overflow-x: hidden;
  }
-
 
 .navbar {
     display: flex;
@@ -27,11 +28,9 @@
     background-color: #121110;
 }
 
-
 .navbar-brand {
     width: 100px;
 }
-
 
 .container {
     max-width: 100%;
@@ -76,7 +75,6 @@
     outline: none;
     border: none;
     color: #fff;
-
 }
 
 .navbar-nav li a {
@@ -190,6 +188,7 @@ main {
 .textCategorias {
     font-size: 22px;
     color: #fff;
+    margin-top: 20px;
 }
 
 .textCategorias span {
@@ -208,7 +207,6 @@ section {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 200px;
     display: flex;
 }
 
@@ -216,8 +214,13 @@ section {
     position: relative;
     bottom: 40px;
     width: 100%;
+    height: 250px;
     padding: 0 50px;
-    margin-bottom: 50px;
+    overflow-x: hidden;
+}
+
+.poster {
+    height: 550px;
 }
 
 .containerItens .titleBox .textTitle {
@@ -228,17 +231,23 @@ section {
 .containerSlider, .containerSlider2 {
     width: 100%;
     display: flex;
-    overflow-x: hidden;
 }
 
 .containerSlider .btnPosition {
     opacity: 0;
+    cursor: pointer;
 }
+
+
+.containerSlider .btnPosition.active {
+    opacity: 1;
+}
+
 
 .containerSlider .btnPosition .bi-chevron-left {
     position: absolute;
     left: 0;
-    top: 30%;
+    top: 40%;
     font-size: 36px;
     z-index: 666;
     color: rgb(166, 164, 164);
@@ -255,7 +264,6 @@ section {
 }
 
 .slide {
-    width: 800px;
     background: #121110;
     border-radius: 5px;
     margin-right: 5px;
@@ -285,9 +293,7 @@ section {
 }
 
 
-.slide:hover .containerMovie {
-    display: block;
-}
+
 
 .movie:hover .containerMovie {
     display: none;
@@ -351,15 +357,16 @@ section {
     right: 0;
     margin: auto;
     width: 100%;
-    max-width: 600px;
+    max-width: 1200px;
     height: 100vh;
-    max-height: 800px;
+    max-height: 97vh;
     background: #121110;
     box-shadow: 0 5px 15px #000;
     border-radius: 20px;
     z-index: -5;
     opacity: 0;
     overflow: hidden;
+    transition: all 0.5s ease-in-out;
 }
 
 .popupBox.active {
@@ -372,7 +379,7 @@ section {
     width: 100%;
     height: 70%;
     background-color: #000;
-    border-radius: 20px;
+    border-radius: 20px 20px 0 0;
     overflow: hidden;
 }
 
@@ -462,6 +469,55 @@ section {
     display: none;
 }
 
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+footer .containerFooter {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+}
+
+footer .containerFooter .social a i {
+    font-size: 25px;
+    color: #808080;
+    margin-right: 10px;
+}
+
+footer .linkFooter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 10px 0;
+}
+
+footer .linkFooter .link {
+    display: flex;
+    flex-direction: column;
+}
+
+footer .linkFooter .link a {
+    font-size: 14px;
+    margin: 5px 0;
+    color: #808080;
+
+}
+
+footer .containerFooter a button {
+    background-color: #121110;
+    color: #808080;
+
+}
+
 
 @media (max-width: 1050px) {
     body {
@@ -477,12 +533,53 @@ section {
         display: block;
     }
     
+    .popupBox {
+        height: 100vh;
+    }
+
+    .containerFooter {
+        padding: 0 10px;
+    }
+    
 }
 
 @media (max-width: 720px) {
-    .navbar, .containerItens {
+    .navbar, .containerItens .containerFooter {
         padding: 0 10px;
     }
+
+    .textMovie .bannerTitle {
+        font-size: 25px;
+    }
+
+    .textinfoPrincipal span, .textMovie .bannerDesc {
+        font-size: 16px;
+    }
+
+    .textMovie .btnMovie button {
+        width: 100px;
+    }
+
+    .textMovie .btnMovie .btn-secondary {
+        width: 130px;
+    }
+
+    .textMovie .btnMovie button span {
+        font-size: 16px;
+    }
+
+    .textCategorias, .textCategorias span {
+        font-size: 16px;
+    }
+
+    .containerItens {
+        padding: 0 10px;
+    }
+
+    .containerItens .titleBox .textTitle {
+        font-size: 25px;
+    }
+    
 
    .formSearch {
     width: 50px;
